@@ -6,6 +6,8 @@ let currentPlayer = "X";
 
 // Variable pour savoir si la partie est terminée
 let gameOver = false;
+let xWins = 0;
+let oWins = 0;
 
 // Combinaisons gagnantes (index des cases)
 const winningCombinations = [
@@ -43,6 +45,13 @@ function handleCellClick(e) {
 
   // Vérifie si on a un gagnant ou une égalité
   checkWinOrDraw();
+  if (board[a] === "X") {
+    xWins++;
+    document.getElementById("score-x").textContent = xWins;
+  } else {
+    oWins++;
+    document.getElementById("score-o").textContent = oWins;
+  }
 
   // Si la partie n'est pas finie, on passe au joueur suivant
   if (!gameOver) {
